@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Autofac.Core;
 using Client.Model.Model.SqlLite;
 using Client.UI.AutofacModule;
+using Client.UI.Extensions;
 
 namespace Client.UI
 {

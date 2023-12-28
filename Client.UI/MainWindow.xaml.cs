@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using AduSkin.Controls.Metro;
 using Autofac.Core;
 using Client.Service.Interface;
+using Client.UI.Extensions;
 
 namespace Client.UI
 {
@@ -24,9 +25,11 @@ namespace Client.UI
     public partial class MainWindow : MetroWindow
     {
         private readonly ITestService _service;
-        public MainWindow(ITestService service)
+        private IAbstractFactory<TestWindow> _factory;
+        public MainWindow(ITestService service, IAbstractFactory<TestWindow> factory)
         {
             _service = service;
+            _factory = factory;
             InitializeComponent();
         }
 
@@ -34,6 +37,8 @@ namespace Client.UI
         {
             string data = await _service.GetData();
             MessageBox.Show(data);
+            var testwindow = _factory.Create();
+            testwindow.Show();
         }
     }
 }
