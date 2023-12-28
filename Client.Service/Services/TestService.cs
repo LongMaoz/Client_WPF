@@ -24,7 +24,14 @@ public class TestService : ITestService
             Console.WriteLine($"An error occurred when connecting to the database: {ex.Message}");
         }
     }
-    public IQueryable<T> GetIQueryable<T>() where T : SqlLiteModel
+
+    public async Task<string?> GetData()
+    {
+        var result = await GetIQueryable<ProductModel>().Where(x => x.ProductId == 9527).FirstOrDefaultAsync();
+        return result?.Name;
+    }
+
+    private IQueryable<T> GetIQueryable<T>() where T : SqlLiteModel
     {
         return _dbContext.Set<T>().AsQueryable();
     }

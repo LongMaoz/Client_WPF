@@ -14,6 +14,8 @@ using Client.Service.Interface;
 using Client.Data;
 using Microsoft.EntityFrameworkCore;
 using Autofac.Core;
+using Client.Model.Model.SqlLite;
+using Client.UI.AutofacModule;
 
 namespace Client.UI
 {
@@ -34,8 +36,8 @@ namespace Client.UI
                 })
                 .ConfigureContainer<ContainerBuilder>(builder =>
                 {
-                    builder.RegisterType<TestService>().As<ITestService>().InstancePerDependency();
-                    builder.RegisterType<MainWindow>().SingleInstance();
+                    builder.RegisterModule(new ServiceModule());
+                    builder.RegisterModule(new WindowModule());
                 })
                 .Build();
         }

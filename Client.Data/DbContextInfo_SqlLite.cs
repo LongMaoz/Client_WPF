@@ -1,6 +1,7 @@
 ﻿using Client.Model;
 using Client.Model.Base;
 using Client.Model.Enum;
+using Client.Model.Model.SqlLite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;

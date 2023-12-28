@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.UI", "Client.UI\Client.UI.csproj", "{0AC18021-3E50-418F-9BA4-F7879F625C54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.UI", "Client.UI\Client.UI.csproj", "{0AC18021-3E50-418F-9BA4-F7879F625C54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Model", "Client.Model\Client.Model.csproj", "{316038E7-D4A6-4E89-B44F-04C315678E39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Model", "Client.Model\Client.Model.csproj", "{316038E7-D4A6-4E89-B44F-04C315678E39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Dto", "Client.Dto\Client.Dto.csproj", "{91DC7296-4C8A-4D38-B3A7-B4969B3E2223}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Dto", "Client.Dto\Client.Dto.csproj", "{91DC7296-4C8A-4D38-B3A7-B4969B3E2223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Data", "Client.Data\Client.Data.csproj", "{D730B9C8-034F-4B1E-82CF-55C732846F7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Data", "Client.Data\Client.Data.csproj", "{D730B9C8-034F-4B1E-82CF-55C732846F7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Service", "Client.Service\Client.Service.csproj", "{C1398DC7-CE59-4F0B-934F-3E2EA47D7C23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Service", "Client.Service\Client.Service.csproj", "{C1398DC7-CE59-4F0B-934F-3E2EA47D7C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

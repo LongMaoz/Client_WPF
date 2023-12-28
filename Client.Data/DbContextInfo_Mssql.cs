@@ -28,14 +28,13 @@ namespace Client.Data
             var ass = Assembly.Load("Client.Model");
             //获取所有的标记TableAttribute,SqlTypeAttribute不为空 的实体类 并且数据库连接为mssql
             var assList = ass.GetExportedTypes()
-                .Where(x => !string.IsNullOrEmpty(x.GetCustomAttribute<TableAttribute>()?.Name) 
+                .Where(x => !string.IsNullOrEmpty(x.GetCustomAttribute<TableAttribute>()?.Name)
                 && x.IsSubclassOf(typeof(MssqlModel))).ToList();
 
             //循环插入实体类类型
             foreach (var type in assList)
             {
-                if (type.BaseType == typeof(object))
-                    modelBuilder.Model.AddEntityType(type);
+                modelBuilder.Model.AddEntityType(type);
             }
 
             //循环插入数据表模型
