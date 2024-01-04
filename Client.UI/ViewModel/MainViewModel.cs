@@ -17,11 +17,9 @@ namespace Client.UI.ViewModel;
 public partial class MainViewModel: ObservableObject
 {
     private readonly ILifetimeScope _scope;
-    private IAbstractFactory<DataTimeControl> _dt;
-    public MainViewModel(ILifetimeScope scope,IAbstractFactory<DataTimeControl> dt)
+    public MainViewModel(ILifetimeScope scope)
     {
         _scope = scope;
-        _dt = dt;
         UpdateMainContent();
     }
 
