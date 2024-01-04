@@ -6,31 +6,31 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="MainWindow" Height="450" Width="800"
+    Title="MainWindow" Height="570" Width="1256"
     >
-    <DockPanel LastChildFill="True" > 
+    <DockPanel LastChildFill="True" >
         <hc:TransitioningContentControl Width="150" DockPanel.Dock="Left" >
             <hc:SideMenu BorderThickness="1" Margin="0,0,0,0" >
                 <hc:Interaction.Triggers >
                     <hc:EventTrigger EventName="SelectionChanged">
-                        <hc:EventToCommand Command="{Binding SwitchItemCmd}" PassEventArgsToCommand="True" />
+                        <hc:EventToCommand Command="{Binding SwitchItemCommand}" PassEventArgsToCommand="True" />
                     </hc:EventTrigger>
                 </hc:Interaction.Triggers>
                 <hc:SideMenuItem Header="答题卷扫描" >
                     <!--<hc:SideMenuItem.Icon>
                         <Image Source="/HandyControlDemo;component/Resources/Img/DevOps/DevOps-Overview.png" Width="24" Height="24"/>
                     </hc:SideMenuItem.Icon>-->
-                    <hc:SideMenuItem Header="考试设置" Selected="SelectionChange" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                    <hc:SideMenuItem Header="考试设置" Name="ExamSettingControl" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <TextBlock Text="&#xf2cb;"/>
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
-                    <hc:SideMenuItem Header="Dashboards"  CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                    <hc:SideMenuItem Header="Dashboards" Name="DataTimeControl" Command="{Binding SelectCmd}"  CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <TextBlock Text="&#xf246;"/>
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
-                    <hc:SideMenuItem Header="Wiki"  CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                    <hc:SideMenuItem Header="FlipClock" Name ="FlipClockControl"  Command="{Binding SelectCmd}"  CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <TextBlock Text="&#xe82d;"/>
                         </hc:SideMenuItem.Icon>
@@ -55,8 +55,6 @@
                 </hc:SideMenuItem>
             </hc:SideMenu>
         </hc:TransitioningContentControl>
-        <hc:TransitioningContentControl Name="TcControl" >
-            <Grid x:Name="GridPrincipal"/>
-        </hc:TransitioningContentControl>
+        <ContentPresenter Name="PresenterMain" Margin="0,0,0,10" Content="{Binding SubContent}"/>
     </DockPanel>
 </hc:Window>

@@ -10,6 +10,13 @@ using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Client.UI.Message;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using HandyControl.Controls;
+using HandyControl.Data;
+using System.Windows.Controls;
+using System.Reflection.PortableExecutable;
 
 namespace Client.UI.ViewModel;
 
@@ -20,6 +27,16 @@ public partial class ExamSettingViewModel : ObservableObject
     {
         _httpService = httpService;
     }
+
+    [ObservableProperty]
+    private GradeDto? _gradSelectItem;
+
+    [ObservableProperty]
+    private ExamTaskDto? _taskSelectItem;
+
+    [ObservableProperty]
+    private ExamSubjectDto? _examSubjectItem;
+
 
     private ObservableCollection<GradeDto> _gradeLst;
     public ObservableCollection<GradeDto> GradeLst
@@ -43,13 +60,27 @@ public partial class ExamSettingViewModel : ObservableObject
         }
     }
 
-    [ObservableProperty]
-    private GradeDto? _gradSelectItem;
+    private ObservableCollection<ExamSubjectDto> _examSubjectLst;
+    public ObservableCollection<ExamSubjectDto> ExamSubjectLst
+    {
+        get { return _examSubjectLst; }
+        set
+        {
+            _examSubjectLst = value;
+            OnPropertyChanged();   // 触发PropertyChanged事件
+        }
+    }
 
-    [ObservableProperty]
-    private ExamTaskDto? _taskSelectItem;
+    #region Command
+    [RelayCommand]
+    private void ScanBtn()
+    {
+        var item = ExamSubjectItem;
+        Growl.Success($"当前选中行{item.Name}:{item.ExamSubjectId}");
+    }
+    #endregion
 
-    public async Task GetSchoolData()
+    public async Task GetGradData()
     {
         var response = await _httpService.PostAsync<ApiResponse<ObservableCollection<GradeDto>>>($"http://192.168.1.138:2326/api/ClientApi/GetGradeFilter");
         GradeLst = response.Success ? response.Data : new ObservableCollection<GradeDto>();
@@ -67,5 +98,17 @@ public partial class ExamSettingViewModel : ObservableObject
         var response = await _httpService.PostJsonAsync<ApiResponse<ObservableCollection<ExamTaskDto>>>($"http://192.168.1.138:2326/api/ClientApi/GetExamReviewTaskFilter", dic);
         ExamTaskLst = response.Success ? response.Data : new ObservableCollection<ExamTaskDto>();
         TaskSelectItem = ExamTaskLst.FirstOrDefault();
+    }
+
+    public async Task GetExamSubject()
+    {
+        if (TaskSelectItem!=null)
+        {
+            //考试任务信息加载
+            var taskId = TaskSelectItem.ReviewExamTaskID;
+            var response = await _httpService.PostAsync<ApiResponse<ObservableCollection<ExamSubjectDto>>>($@"http://192.168.1.138:2326/api/ClientApi/GetExamSubjectTable?examTaskId={taskId}");
+            ExamSubjectLst = response.Success ? response.Data : new ObservableCollection<ExamSubjectDto>();
+            //ExamSubjectItem = ExamSubjectLst.FirstOrDefault();
+        }
     }
 }

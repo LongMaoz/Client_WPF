@@ -10,5 +10,6 @@ public class ViewModelModule:Module
     protected override void Load(ContainerBuilder builder)
     {
         builder.RegisterType<ExamSettingViewModel>().InstancePerDependency();
+        builder.RegisterType<MainViewModel>().InstancePerDependency();
     }
 }

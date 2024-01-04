@@ -33,13 +33,20 @@ namespace Client.UI.UserControl
 
         private async void ExamSettingControl_Loaded(object sender, RoutedEventArgs e)
         {
-            await _viewModel.GetSchoolData();
             this.Loaded -= ExamSettingControl_Loaded;
+            await _viewModel.GetGradData();
         }
 
         private async void GradCombox_Selected(object sender, RoutedEventArgs e)
         {
+            _viewModel.ExamSubjectItem = null;
+            _viewModel.ExamSubjectLst = null;
             await _viewModel.GetExmaTaskData();
+        }
+
+        private async void ExamTaskCombox_Selected(object sender, SelectionChangedEventArgs e)
+        {
+            await _viewModel.GetExamSubject();
         }
     }
 }

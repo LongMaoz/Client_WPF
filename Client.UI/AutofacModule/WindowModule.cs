@@ -11,6 +11,7 @@ public class WindowModule : Module
         builder.AddFormFactory<TestWindow>();
         builder.AddFormFactory<DataTimeControl>();
         builder.AddFormFactory<ExamSettingControl>();
+        builder.AddFormFactory<FlipClockControl>();
         builder.RegisterType<MainWindow>().SingleInstance();
     }
 }

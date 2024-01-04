@@ -14,12 +14,12 @@ public class HttpClientService
     public HttpClientService()
     {
         _httpClient = new HttpClient();
+        _httpClient.Timeout = TimeSpan.FromSeconds(10);
     }
 
     // 无参数的POST方法
     public async Task<T> PostAsync<T>(string url)
     {
-        _httpClient.Timeout = TimeSpan.FromSeconds(10);
         var response = await _httpClient.PostAsync(url, null);
 
         // 检查响应是否成功
