@@ -39,6 +39,7 @@ namespace Client.UI
                 {
                     builder.RegisterModule(new ServiceModule());
                     builder.RegisterModule(new WindowModule());
+                    builder.RegisterModule(new ViewModelModule());
                 })
                 .Build();
         }

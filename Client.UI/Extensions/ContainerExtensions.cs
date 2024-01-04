@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Windows.Forms;
+using System.Windows;
 
 namespace Client.UI.Extensions;
 

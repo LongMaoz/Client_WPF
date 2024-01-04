@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Model\Mssql\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
 
 </Project>

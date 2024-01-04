@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="Client.UI.UserControl.DataTimeControl"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client.UI.UserControl"
+             mc:Ignorable="d" >
+    <hc:TransitioningContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <hc:CalendarWithClock Margin="0"/>
+    </hc:TransitioningContentControl>
+</UserControl>
