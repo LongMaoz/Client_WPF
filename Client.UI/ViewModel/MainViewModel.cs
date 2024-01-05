@@ -31,23 +31,19 @@ public partial class MainViewModel: ObservableObject
         WeakReferenceMessenger.Default.Send(new SwitchItemMessage(info.Info as SideMenuItem));
     }
 
-    public RelayCommand<string> SelectCmd => new(Select);
-
-    private void Select(string header) => Growl.Success(header);
-
     [ObservableProperty]
     private object? _subContent;
 
 
     private void UpdateMainContent()
     {
-        WeakReferenceMessenger.Default.Register<SwitchItemMessage>(this, (r, x) =>
+        //注册Messenger
+        WeakReferenceMessenger.Default.Register<MainViewModel,SwitchItemMessage>(this, (r, x) =>
         {
             if (SubContent is IDisposable disposable)
             {
                 disposable.Dispose();
             }
-
             Type type = Type.GetType($"{typeof(MainViewModel).Assembly.GetName().Name}.UserControl.{x.Value.Name}");
 
             if (type == null)
@@ -55,25 +51,15 @@ public partial class MainViewModel: ObservableObject
                 return;
             }
 
-            // 创建 IAbstractFactory<> 的类型
             var factoryGenericType = typeof(IAbstractFactory<>);
-
-            // 使用相应的 type 创建泛型
             var factoryType = factoryGenericType.MakeGenericType(type);
-
-            // 使用反射调用 Autofac 的 Resolve 方法
             var service = _scope.Resolve(factoryType);
-
-            // 获取 `Create` 方法
             MethodInfo createMethod = factoryType.GetMethod("Create");
-
-            // 确保找到 `Create` 方法
             if (createMethod == null)
             {
-                throw new Exception("Create method not found in the service.");
+                //没有勾子Create
+                return;
             }
-
-            // 运行 `Create` 方法并将结果赋给 SubContent
             SubContent = createMethod.Invoke(service, null);
         });
     }

@@ -25,19 +25,19 @@
                             <TextBlock Text="&#xf2cb;"/>
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
-                    <hc:SideMenuItem Header="Dashboards" Name="DataTimeControl" Command="{Binding SelectCmd}"  CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                    <hc:SideMenuItem Header="Dashboards" Name="DataTimeControl"   CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <TextBlock Text="&#xf246;"/>
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
-                    <hc:SideMenuItem Header="FlipClock" Name ="FlipClockControl"  Command="{Binding SelectCmd}"  CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                    <hc:SideMenuItem Header="FlipClock" Name ="FlipClockControl"    CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <TextBlock Text="&#xe82d;"/>
                         </hc:SideMenuItem.Icon>
                     </hc:SideMenuItem>
                 </hc:SideMenuItem>
                 <hc:SideMenuItem Header="模板制作">
-                    <hc:SideMenuItem Header="Summary" Command="{Binding SelectCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                    <hc:SideMenuItem Header="Summary"  CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
                         <hc:SideMenuItem.Icon>
                             <TextBlock Text="&#xf2cb;"/>
                         </hc:SideMenuItem.Icon>

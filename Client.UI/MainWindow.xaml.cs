@@ -31,16 +31,9 @@ namespace Client.UI
     /// </summary>
     public partial class MainWindow : HandyControl.Controls.Window
     {
-        private IAbstractFactory<TestWindow> _factory;
-        private IAbstractFactory<DataTimeControl> _factory2;
-        private IAbstractFactory<ExamSettingControl> _factory3;
-
         
-        public MainWindow(MainViewModel viewModel, IAbstractFactory<TestWindow> factory,IAbstractFactory<DataTimeControl> factory2, IAbstractFactory<ExamSettingControl> factory3)
+        public MainWindow(MainViewModel viewModel)
         {
-            _factory = factory;
-            _factory2 = factory2;
-            _factory3 = factory3;
             InitializeComponent();
             this.DataContext = viewModel;
             this.Title = "云阅卷";
